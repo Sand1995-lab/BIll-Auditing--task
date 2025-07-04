@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Auditing Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #34495e;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .gas-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .electricity-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .table-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        /* Gas Table Styling */
+        .gas-table thead tr:first-child {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .gas-table thead tr:nth-child(2) {
+            background: #8b80f9;
+            color: white;
+        }
+
+        .gas-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .gas-table tbody tr:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.01);
+        }
+
+        .gas-table tbody tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        /* Electricity Table Styling */
+        .electricity-table thead tr:first-child {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .electricity-table thead tr:nth-child(2) {
+            background: #f774c5;
+            color: white;
+        }
+
+        .electricity-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .electricity-table tbody tr:hover {
+            background: rgba(240, 147, 251, 0.1);
+            transform: scale(1.01);
+        }
+
+        .electricity-table tbody tr:nth-child(even) {
+            background: #fff5fc;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        thead th {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        tbody td {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* Highlight negative values */
+        .negative {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+
+        /* Highlight positive values */
+        .positive {
+            color: #27ae60;
+            font-weight: 700;
+        }
+
+        /* Date styling */
+        .date-cell {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .section-title {
+                font-size: 1.4em;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+        }
+
+        /* Scrollbar styling */
+        .table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Bill Auditing Report</h1>
+        
+        <!-- Gas Section -->
+        <div class="section-title">
+            <div class="icon gas-icon">🔥</div>
+            <span>Gas Billing Analysis</span>
+        </div>
+        
+        <div class="table-wrapper">
+            <table class="gas-table">
+                <thead>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="6" style="text-align: center;">Transportation General Firm Rate I Non-Res</th>
+                        <th colspan="9" style="text-align: center;">91851-21000-4</th>
+                    </tr>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Energy Charge<br>First 3 TH</th>
+                        <th>Energy Charge<br>Next 87 TH</th>
+                        <th>Usage TH</th>
+                        <th>Energy Charge<br>Last TH</th>
+                        <th>Usage Left</th>
+                        <th>Monthly Rate Adj</th>
+                        <th>Energy Charge<br>First 1.30 TH</th>
+                        <th>Energy Charge<br>Last TH</th>
+                        <th>Energy Charge<br>Last Usage</th>
+                        <th>Energy Charge<br>Overcharge</th>
+                        <th>Monthly Rate Adj</th>
+                        <th>Monthly Rate Adj<br>Overcharge</th>
+                        <th>Usage</th>
+                        <th>Total Charges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="date-cell">30/04/2025</td>
+                        <td class="date-cell">13/05/2025</td>
+                        <td>47</td>
+                        <td>1.0972</td>
+                        <td>87</td>
+                        <td>0.6545</td>
+                        <td>115</td>
+                        <td>0.001494</td>
+                        <td>20.37</td>
+                        <td>0.75645</td>
+                        <td>163.7</td>
+                        <td class="negative">-128.82</td>
+                        <td>0.13327</td>
+                        <td>0.131776</td>
+                        <td>165</td>
+                        <td class="negative">-128.69</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Electricity Section -->
+        <div class="section-title">
+            <div class="icon electricity-icon">⚡</div>
+            <span>Electricity Billing Analysis</span>
+        </div>
+        
+        <div class="table-wrapper">
+            <table class="electricity-table">
+                <thead>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="3" style="text-align: center;">EL8 Residential Redistribution</th>
+                        <th colspan="9" style="text-align: center;">91851-21000-4</th>
+                    </tr>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Customer<br>Charge</th>
+                        <th>Energy<br>Charge</th>
+                        <th>Demand<br>Charge</th>
+                        <th>Customer<br>Charge</th>
+                        <th>Customer Charge<br>Overcharge</th>
+                        <th>Energy<br>Charge</th>
+                        <th>Energy Charge<br>Usage</th>
+                        <th>Energy Charge<br>Overcharge</th>
+                        <th>Demand<br>Charge</th>
+                        <th>Demand<br>Usage</th>
+                        <th>Demand Charge<br>Overcharge</th>
+                        <th>Total Overcharges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="date-cell">13/04/2025</td>
+                        <td class="date-cell">12/05/2025</td>
+                        <td>58</td>
+                        <td>0.0132</td>
+                        <td>41.56</td>
+                        <td>56.07</td>
+                        <td class="negative">-1.93</td>
+                        <td>0.0352</td>
+                        <td>44,319</td>
+                        <td class="positive">974.13</td>
+                        <td>41.788</td>
+                        <td>109.56</td>
+                        <td class="positive">24.98</td>
+                        <td class="positive">997.18</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
