@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Auditing Report - Elegant Edition</title>
+    <title>Bill Auditing Report - Executive Edition</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -14,321 +14,318 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f7 25%, #fcdfff 50%, #ffd6e8 75%, #ffecf5 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e6e1 50%, #d4cfc4 100%);
             min-height: 100vh;
             padding: 40px 20px;
             position: relative;
-            overflow-x: hidden;
+            color: #2c3e50;
         }
 
-        /* Decorative elements */
+        /* Copper accent overlay */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,182,193,0.3) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at top left, rgba(184, 115, 51, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(205, 127, 50, 0.1) 0%, transparent 50%);
             pointer-events: none;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,105,180,0.2) 0%, transparent 50%);
-            animation: float 25s ease-in-out infinite reverse;
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
+            z-index: 1;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* Sparkle animation */
-        @keyframes sparkle {
-            0% { opacity: 0; transform: scale(0) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1) rotate(180deg); }
-            100% { opacity: 0; transform: scale(0) rotate(360deg); }
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            animation: sparkle 3s ease-in-out infinite;
+        /* Header Section */
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            font-size: 3.5em;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.2em;
             font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ff6b9d, #c44569, #ff8787, #ff6b9d);
-            background-size: 300% 300%;
+            color: #1a3a52;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+
+        .copper-accent {
+            display: inline-block;
+            background: linear-gradient(135deg, #b87333, #cd7f32, #da8936);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradient-shift 8s ease infinite;
-            text-shadow: 0 0 30px rgba(255,107,157,0.3);
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-weight: 700;
         }
 
         .subtitle {
-            text-align: center;
-            color: #ff6b9d;
-            font-size: 1.2em;
-            margin-bottom: 50px;
-            font-weight: 300;
+            font-size: 1.1em;
+            color: #546e7a;
+            font-weight: 400;
             letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Decorative line */
+        .decorative-line {
+            height: 3px;
+            width: 100px;
+            margin: 20px auto;
+            background: linear-gradient(90deg, transparent, #b87333, #cd7f32, #b87333, transparent);
+            border-radius: 2px;
+        }
+
+        /* Section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin: 60px 0 30px;
+            position: relative;
+        }
+
+        .section-header::before,
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #90a4ae, transparent);
         }
 
         .section-title {
-            font-size: 2em;
+            padding: 0 30px;
+            font-size: 1.6em;
             font-weight: 600;
-            margin: 60px 0 30px;
+            color: #37474f;
             display: flex;
             align-items: center;
-            gap: 20px;
-            color: #c44569;
-            position: relative;
+            gap: 15px;
         }
 
-        .section-title::before,
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #ffb6c1, transparent);
-        }
-
-        .icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
+            font-size: 1.4em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
-            box-shadow: 0 8px 20px rgba(255,107,157,0.3);
-            animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(255,107,157,0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255,107,157,0.5); }
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(255,107,157,0.3); }
+        .icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #b87333, #cd7f32, #da8936, #cd7f32);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .icon-wrapper:hover::before {
+            opacity: 1;
         }
 
         .gas-icon {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            background: linear-gradient(135deg, #4a6b8a 0%, #5c7a99 100%);
             color: white;
         }
 
         .electricity-icon {
-            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            background: linear-gradient(135deg, #4a7c59 0%, #5a8f69 100%);
             color: white;
         }
 
+        /* Table styling */
         .table-wrapper {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            box-shadow: 
-                0 20px 60px rgba(255,107,157,0.15),
-                0 10px 30px rgba(255,107,157,0.1),
-                inset 0 1px 0 rgba(255,255,255,0.9);
+            background: #ffffff;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 50px;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.08),
+                0 1px 0 rgba(255,255,255,0.9) inset;
+            border: 1px solid rgba(184, 115, 51, 0.2);
             position: relative;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,182,193,0.3);
+            margin-bottom: 40px;
         }
 
+        /* Copper trim */
         .table-wrapper::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,182,193,0.05) 0%, rgba(255,105,180,0.05) 100%);
-            pointer-events: none;
+            height: 4px;
+            background: linear-gradient(90deg, #b87333, #cd7f32, #da8936, #cd7f32, #b87333);
         }
 
         .table-scroll {
             overflow-x: auto;
-            position: relative;
+            padding: 4px 0 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Gas Table Styling */
+        /* Gas table headers */
         .gas-table thead tr:first-child {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #37474f 0%, #455a64 100%);
+            color: #ffffff;
         }
 
         .gas-table thead tr:nth-child(2) {
-            background: linear-gradient(135deg, #fecfef 0%, #ffdde1 100%);
-            color: #c44569;
+            background: linear-gradient(135deg, #546e7a 0%, #607d8b 100%);
+            color: #ffffff;
         }
 
-        .gas-table tbody tr {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .gas-table tbody tr:hover {
-            background: linear-gradient(135deg, rgba(255,154,158,0.1) 0%, rgba(254,207,239,0.1) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,157,0.2);
-        }
-
-        .gas-table tbody tr:nth-child(even) {
-            background: rgba(255,221,225,0.15);
-        }
-
-        /* Electricity Table Styling */
+        /* Electricity table headers */
         .electricity-table thead tr:first-child {
-            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #fbc2eb 100%);
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #2e4a3a 0%, #3d5a4a 100%);
+            color: #ffffff;
         }
 
         .electricity-table thead tr:nth-child(2) {
-            background: linear-gradient(135deg, #fbc2eb 0%, #ffd1ff 100%);
-            color: #8b5cf6;
-        }
-
-        .electricity-table tbody tr {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .electricity-table tbody tr:hover {
-            background: linear-gradient(135deg, rgba(161,140,209,0.1) 0%, rgba(251,194,235,0.1) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(161,140,209,0.2);
-        }
-
-        .electricity-table tbody tr:nth-child(even) {
-            background: rgba(251,194,235,0.08);
+            background: linear-gradient(135deg, #4a7c59 0%, #5a8f69 100%);
+            color: #ffffff;
         }
 
         th, td {
-            padding: 18px 15px;
+            padding: 16px;
             text-align: left;
-            position: relative;
         }
 
         thead th {
             font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 12px;
             text-transform: uppercase;
-            font-size: 11px;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
-        tbody td {
-            color: #5a5a5a;
-            font-weight: 400;
-            border-bottom: 1px solid rgba(255,182,193,0.1);
+        thead th:last-child {
+            border-right: none;
         }
 
-        tbody tr:last-child td {
+        tbody tr {
+            border-bottom: 1px solid #e8e6e1;
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.05) 0%, rgba(205, 127, 50, 0.05) 100%);
+            transform: translateX(5px);
+        }
+
+        tbody tr:last-child {
             border-bottom: none;
         }
 
-        /* Value styling with icons */
+        tbody td {
+            color: #37474f;
+            font-weight: 400;
+            position: relative;
+        }
+
+        /* Special cell styling */
+        .date-cell {
+            color: #546e7a;
+            font-weight: 500;
+            background: rgba(69, 90, 100, 0.05);
+            border-radius: 6px;
+        }
+
+        .currency {
+            font-weight: 500;
+            color: #1a3a52;
+        }
+
         .negative {
-            color: #e91e63;
+            color: #c62828;
             font-weight: 600;
             position: relative;
             padding-left: 20px;
         }
 
         .negative::before {
-            content: '↓';
+            content: '▼';
             position: absolute;
             left: 0;
-            font-size: 16px;
+            font-size: 12px;
+            color: #e57373;
         }
 
         .positive {
-            color: #4caf50;
+            color: #2e7d32;
             font-weight: 600;
             position: relative;
             padding-left: 20px;
         }
 
         .positive::before {
-            content: '↑';
+            content: '▲';
             position: absolute;
             left: 0;
-            font-size: 16px;
+            font-size: 12px;
+            color: #66bb6a;
         }
 
-        /* Date styling */
-        .date-cell {
-            color: #ff6b9d;
+        .metric {
+            color: #455a64;
             font-weight: 500;
-            font-style: normal;
-            background: rgba(255,107,157,0.05);
-            border-radius: 10px;
+            font-family: 'Montserrat', monospace;
         }
 
-        /* Header decorations */
-        .header-decoration {
+        /* Account info styling */
+        .account-info {
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1) 0%, rgba(205, 127, 50, 0.05) 100%);
+            color: #b87333;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer decoration */
+        .footer-decoration {
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 2em;
-            color: #ff6b9d;
-            opacity: 0.6;
+            margin-top: 60px;
+            color: #90a4ae;
+            font-size: 0.9em;
         }
 
-        /* Responsive design */
+        /* Responsive */
         @media (max-width: 768px) {
             body {
                 padding: 20px 10px;
             }
             
             h1 {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
             
             .section-title {
-                font-size: 1.5em;
+                font-size: 1.3em;
             }
             
             table {
@@ -336,80 +333,45 @@
             }
             
             th, td {
-                padding: 12px 8px;
+                padding: 10px 8px;
             }
         }
 
-        /* Custom scrollbar */
+        /* Premium scrollbar */
         .table-scroll::-webkit-scrollbar {
-            height: 12px;
+            height: 10px;
         }
 
         .table-scroll::-webkit-scrollbar-track {
-            background: #ffe0f7;
-            border-radius: 10px;
+            background: #f5f5f0;
+            border-radius: 5px;
         }
 
         .table-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #ff6b9d, #fbc2eb);
-            border-radius: 10px;
-            box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+            background: linear-gradient(90deg, #b87333, #cd7f32);
+            border-radius: 5px;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
         }
 
         .table-scroll::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90deg, #ff5588, #f8a5d5);
-        }
-
-        /* Floating hearts animation */
-        .heart {
-            position: fixed;
-            color: rgba(255,107,157,0.3);
-            font-size: 20px;
-            animation: float-heart 10s linear infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes float-heart {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+            background: linear-gradient(90deg, #a66328, #b8732d);
         }
     </style>
 </head>
 <body>
-    <!-- Floating hearts -->
-    <div class="heart" style="left: 10%; animation-delay: 0s;">💕</div>
-    <div class="heart" style="left: 30%; animation-delay: 2s;">💖</div>
-    <div class="heart" style="left: 50%; animation-delay: 4s;">💗</div>
-    <div class="heart" style="left: 70%; animation-delay: 6s;">💓</div>
-    <div class="heart" style="left: 90%; animation-delay: 8s;">💕</div>
-
     <div class="container">
-        <div class="header-decoration">✨ ❀ ✨</div>
-        <h1>Bill Auditing Report</h1>
-        <p class="subtitle">Financial Analysis & Review</p>
-        
-        <!-- Sparkles -->
-        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
-        <div class="sparkle" style="top: 30%; right: 20%; animation-delay: 1s;"></div>
-        <div class="sparkle" style="top: 60%; left: 10%; animation-delay: 2s;"></div>
+        <div class="header-section">
+            <h1>Bill Auditing <span class="copper-accent">Report</span></h1>
+            <div class="decorative-line"></div>
+            <p class="subtitle">Comprehensive Utility Analysis</p>
+        </div>
         
         <!-- Gas Section -->
-        <div class="section-title">
-            <div class="icon gas-icon">🌸</div>
-            <span>Gas Billing Analysis</span>
+        <div class="section-header">
+            <h2 class="section-title">
+                <div class="icon-wrapper gas-icon">⛽</div>
+                Gas Service Analysis
+            </h2>
         </div>
         
         <div class="table-wrapper">
@@ -419,7 +381,7 @@
                         <tr>
                             <th colspan="2"></th>
                             <th colspan="6" style="text-align: center;">Transportation General Firm Rate I Non-Res</th>
-                            <th colspan="9" style="text-align: center;">Account: 91851-21000-4</th>
+                            <th colspan="8" style="text-align: center;" class="account-info">Account: 91851-21000-4</th>
                         </tr>
                         <tr>
                             <th>From</th>
@@ -444,19 +406,19 @@
                         <tr>
                             <td class="date-cell">30/04/2025</td>
                             <td class="date-cell">13/05/2025</td>
-                            <td>$47.00</td>
-                            <td>$1.0972</td>
-                            <td>87</td>
-                            <td>$0.6545</td>
-                            <td>115</td>
-                            <td>$0.001494</td>
-                            <td>$20.37</td>
-                            <td>$0.75645</td>
-                            <td>$163.70</td>
+                            <td class="currency">$47.00</td>
+                            <td class="currency">$1.0972</td>
+                            <td class="metric">87</td>
+                            <td class="currency">$0.6545</td>
+                            <td class="metric">115</td>
+                            <td class="currency">$0.001494</td>
+                            <td class="currency">$20.37</td>
+                            <td class="currency">$0.75645</td>
+                            <td class="currency">$163.70</td>
                             <td class="negative">$128.82</td>
-                            <td>$0.13327</td>
-                            <td>$0.131776</td>
-                            <td>165</td>
+                            <td class="currency">$0.13327</td>
+                            <td class="currency">$0.131776</td>
+                            <td class="metric">165</td>
                             <td class="negative">$128.69</td>
                         </tr>
                     </tbody>
@@ -465,9 +427,11 @@
         </div>
 
         <!-- Electricity Section -->
-        <div class="section-title">
-            <div class="icon electricity-icon">🌟</div>
-            <span>Electricity Billing Analysis</span>
+        <div class="section-header">
+            <h2 class="section-title">
+                <div class="icon-wrapper electricity-icon">⚡</div>
+                Electricity Service Analysis
+            </h2>
         </div>
         
         <div class="table-wrapper">
@@ -477,7 +441,7 @@
                         <tr>
                             <th colspan="2"></th>
                             <th colspan="3" style="text-align: center;">EL8 Residential Redistribution</th>
-                            <th colspan="9" style="text-align: center;">Account: 91851-21000-4</th>
+                            <th colspan="9" style="text-align: center;" class="account-info">Account: 91851-21000-4</th>
                         </tr>
                         <tr>
                             <th>From</th>
@@ -500,22 +464,27 @@
                         <tr>
                             <td class="date-cell">13/04/2025</td>
                             <td class="date-cell">12/05/2025</td>
-                            <td>$58.00</td>
-                            <td>$0.0132</td>
-                            <td>$41.56</td>
-                            <td>$56.07</td>
+                            <td class="currency">$58.00</td>
+                            <td class="currency">$0.0132</td>
+                            <td class="currency">$41.56</td>
+                            <td class="currency">$56.07</td>
                             <td class="negative">$1.93</td>
-                            <td>$0.0352</td>
-                            <td>44,319</td>
+                            <td class="currency">$0.0352</td>
+                            <td class="metric">44,319</td>
                             <td class="positive">$974.13</td>
-                            <td>$41.788</td>
-                            <td>109.56</td>
+                            <td class="currency">$41.788</td>
+                            <td class="metric">109.56</td>
                             <td class="positive">$24.98</td>
                             <td class="positive">$997.18</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
+        
+        <div class="footer-decoration">
+            <div class="decorative-line"></div>
+            <p>Financial Analysis Report • 2025</p>
         </div>
     </div>
 </body>
